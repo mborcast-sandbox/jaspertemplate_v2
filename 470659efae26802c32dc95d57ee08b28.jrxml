@@ -778,6 +778,10 @@
 	<field name="reportingYear" class="java.lang.String">
 		<fieldDescription><![CDATA[data.timePeriod.reportingYear]]></fieldDescription>
 	</field>
+	<field name="returnsCurrency" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="data.portfolio.returnsCurrency"/>
+		<fieldDescription><![CDATA[data.portfolio.returnsCurrency]]></fieldDescription>
+	</field>
 	<field name="netSemester" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="data.returnRates.netSemester"/>
 		<fieldDescription><![CDATA[data.returnRates.netSemester]]></fieldDescription>
@@ -2295,7 +2299,7 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 									<text><![CDATA[Mes]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:detailCell style="Table_TD" height="13">
+							<jr:detailCell height="13">
 								<textField>
 									<reportElement x="0" y="0" width="110" height="13" uuid="0d5c83a1-4e97-4b26-95f3-c718e0d6b247"/>
 									<textElement verticalAlignment="Middle">
@@ -2316,7 +2320,7 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 									<text><![CDATA[Rendimiento Neto]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:detailCell style="Table_TD" height="13">
+							<jr:detailCell height="13">
 								<textField>
 									<reportElement x="0" y="0" width="75" height="13" uuid="2c86d4f5-08b3-4e19-a742-6b95013fc82d"/>
 									<textElement textAlignment="Right" verticalAlignment="Middle">
@@ -2342,9 +2346,6 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 				</textField>
 				<staticText>
 					<reportElement x="195" y="260" width="125" height="20" uuid="f60a2938-15c7-4d84-b0e3-9c48a2703f61"/>
-					<box>
-						<bottomPen lineWidth="1.0"/>
-					</box>
 					<textElement verticalAlignment="Middle">
 						<font size="8" isBold="true"/>
 						<paragraph leftIndent="8"/>
@@ -2353,9 +2354,6 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 				</staticText>
 				<textField>
 					<reportElement x="320" y="260" width="60" height="20" uuid="3d7b1e4c-89a0-4f36-b527-06e9c284a715"/>
-					<box>
-						<bottomPen lineWidth="1.0"/>
-					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="9"/>
 						<paragraph rightIndent="10"/>
@@ -2364,9 +2362,6 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 				</textField>
 				<staticText>
 					<reportElement x="195" y="280" width="125" height="20" uuid="7e2c04b8-3f91-4a6d-85c0-1b73de950842"/>
-					<box>
-						<bottomPen lineWidth="1.0"/>
-					</box>
 					<textElement verticalAlignment="Middle">
 						<font size="8" isBold="true"/>
 						<paragraph leftIndent="8"/>
@@ -2375,16 +2370,13 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 				</staticText>
 				<textField>
 					<reportElement x="320" y="280" width="60" height="20" uuid="0a58f6d3-2b47-4e91-9c68-53b8e1470926"/>
-					<box>
-						<bottomPen lineWidth="1.0"/>
-					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="9"/>
 						<paragraph rightIndent="10"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{netSemester}+"%"]]></textFieldExpression>
 				</textField>
-				<staticText>
+				<textField>
 					<reportElement x="0" y="420" width="560" height="14" uuid="4f1a7c25-90b6-4e38-a1d7-62c085b93e14"/>
 					<box>
 						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -2396,8 +2388,8 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 						<font size="8"/>
 						<paragraph leftIndent="5"/>
 					</textElement>
-					<text><![CDATA[*Tasas de rendimiento efectivas del periodo indicado y rendimientos en pesos / dólares americanos (Según sea el caso)]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA["*Tasas de rendimiento efectivas del periodo indicado y rendimientos en "+$F{returnsCurrency}]]></textFieldExpression>
+				</textField>
 				<textField>
 					<reportElement x="270" y="210" width="100" height="20" uuid="f8ec245e-3f5b-4f4b-898c-b1f89d983c9e"/>
 					<box>
