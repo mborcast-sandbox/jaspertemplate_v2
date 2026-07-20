@@ -603,6 +603,19 @@
 			<fieldDescription><![CDATA[neto]]></fieldDescription>
 		</field>
 	</subDataset>
+	<subDataset name="MonthlyReturns" uuid="3f2a91c4-7d18-4e52-9a63-1c0b5e7d4a11">
+		<queryString language="JSON">
+			<![CDATA[data.monthlyReturns]]>
+		</queryString>
+		<field name="month" class="java.lang.String">
+			<property name="net.sf.jasperreports.json.field.expression" value="month"/>
+			<fieldDescription><![CDATA[month]]></fieldDescription>
+		</field>
+		<field name="net" class="java.lang.String">
+			<property name="net.sf.jasperreports.json.field.expression" value="net"/>
+			<fieldDescription><![CDATA[net]]></fieldDescription>
+		</field>
+	</subDataset>
 	<queryString language="JSON">
 		<![CDATA[data.balance.moneyMarketInvestment.value]]>
 	</queryString>
@@ -764,6 +777,34 @@
 	</field>
 	<field name="reportingYear" class="java.lang.String">
 		<fieldDescription><![CDATA[data.timePeriod.reportingYear]]></fieldDescription>
+	</field>
+	<field name="netSemester" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="data.returnRates.netSemester"/>
+		<fieldDescription><![CDATA[data.returnRates.netSemester]]></fieldDescription>
+	</field>
+	<field name="grossSemester" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="data.returnRates.grossSemester"/>
+		<fieldDescription><![CDATA[data.returnRates.grossSemester]]></fieldDescription>
+	</field>
+	<field name="semesterLabel" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="data.returnRates.semesterLabel"/>
+		<fieldDescription><![CDATA[data.returnRates.semesterLabel]]></fieldDescription>
+	</field>
+	<field name="serviceSobreTotal" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="data.concepts.serviceSobreTotal"/>
+		<fieldDescription><![CDATA[data.concepts.serviceSobreTotal]]></fieldDescription>
+	</field>
+	<field name="intermediacionSobreTotal" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="data.concepts.intermediacionSobreTotal"/>
+		<fieldDescription><![CDATA[data.concepts.intermediacionSobreTotal]]></fieldDescription>
+	</field>
+	<field name="adminSobreTotal" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="data.concepts.adminSobreTotal"/>
+		<fieldDescription><![CDATA[data.concepts.adminSobreTotal]]></fieldDescription>
+	</field>
+	<field name="isrSobreTotal" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="data.concepts.isrSobreTotal"/>
+		<fieldDescription><![CDATA[data.concepts.isrSobreTotal]]></fieldDescription>
 	</field>
 	<pageHeader>
 		<band height="80" splitType="Stretch">
@@ -1875,9 +1916,9 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 				<reportElement x="0" y="10" width="749" height="1" uuid="14b2ad86-2a10-4b55-8f98-40c2ebe1b880"/>
 			</break>
 		</band>
-		<band height="392">
+		<band height="448">
 			<frame>
-				<reportElement x="0" y="12" width="752" height="380" uuid="694d894d-4c57-423b-ac02-3831f84ee611"/>
+				<reportElement x="0" y="12" width="752" height="436" uuid="694d894d-4c57-423b-ac02-3831f84ee611"/>
 				<frame>
 					<reportElement x="0" y="25" width="370" height="175" uuid="8b311691-39e4-4d43-aef3-a52824b5a546"/>
 					<staticText>
@@ -2032,7 +2073,69 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 						<text><![CDATA[Concepto]]></text>
 					</staticText>
 					<staticText>
-						<reportElement mode="Opaque" x="250" y="0" width="120" height="30" forecolor="#FFFFFF" backcolor="#016390" uuid="c3ea8617-5123-4b3e-bfae-1dcd4d2f4ef1"/>
+						<reportElement mode="Opaque" x="305" y="0" width="65" height="30" forecolor="#FFFFFF" backcolor="#016390" uuid="b1d47a29-6c30-4f8e-91a5-2e7c0d94b331"/>
+						<box>
+							<bottomPen lineWidth="1.0"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font isBold="true"/>
+							<paragraph leftIndent="5"/>
+						</textElement>
+						<text><![CDATA[%]]></text>
+					</staticText>
+					<textField>
+						<reportElement x="305" y="30" width="65" height="30" uuid="9a3f21e7-5b84-4c17-b6d9-08e4f7523ca6"/>
+						<box>
+							<bottomPen lineWidth="1.0"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<paragraph rightIndent="5"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{serviceSobreTotal}+"%"]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="305" y="60" width="65" height="30" uuid="c8e5b03d-4a71-4269-8f52-73a1e6c0d842"/>
+						<box>
+							<bottomPen lineWidth="1.0"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<paragraph rightIndent="5"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{intermediacionSobreTotal}+"%"]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="305" y="90" width="65" height="30" uuid="7d40c8b1-9e26-4f35-8a71-c6039be5471d"/>
+						<box>
+							<bottomPen lineWidth="1.0"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<paragraph rightIndent="5"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{adminSobreTotal}+"%"]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="305" y="120" width="65" height="30" uuid="4c6e1852-b07f-49da-9163-2ae8d5304f7b"/>
+						<box>
+							<bottomPen lineWidth="1.0"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font size="10" isBold="true"/>
+							<paragraph rightIndent="5"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{totalComisionesSobreTotal}+"%"]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="305" y="180" width="65" height="30" uuid="e2b906fa-13c5-4d78-a04b-5f8c27164193"/>
+						<box>
+							<bottomPen lineWidth="1.0"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<paragraph rightIndent="5"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{isrSobreTotal}+"%"]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement mode="Opaque" x="215" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#016390" uuid="c3ea8617-5123-4b3e-bfae-1dcd4d2f4ef1"/>
 						<box>
 							<bottomPen lineWidth="1.0"/>
 						</box>
@@ -2043,7 +2146,7 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 						<text><![CDATA[Monto]]></text>
 					</staticText>
 					<staticText>
-						<reportElement x="0" y="60" width="250" height="30" uuid="50d49841-3e5f-4cdf-b47d-5132e4a3775a"/>
+						<reportElement x="0" y="60" width="215" height="30" uuid="50d49841-3e5f-4cdf-b47d-5132e4a3775a"/>
 						<box>
 							<bottomPen lineWidth="1.0"/>
 						</box>
@@ -2054,7 +2157,7 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 						<text><![CDATA[Comisiones y gastos de Intermediación*]]></text>
 					</staticText>
 					<textField>
-						<reportElement x="250" y="60" width="120" height="30" uuid="0090e19a-2762-4e3a-bd2c-39b5ed9fad12"/>
+						<reportElement x="215" y="60" width="90" height="30" uuid="0090e19a-2762-4e3a-bd2c-39b5ed9fad12"/>
 						<box>
 							<bottomPen lineWidth="1.0"/>
 						</box>
@@ -2064,7 +2167,7 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 						<textFieldExpression><![CDATA["$"+$F{intermediacion}]]></textFieldExpression>
 					</textField>
 					<staticText>
-						<reportElement x="0" y="30" width="250" height="30" uuid="d7a0561c-83d8-4d29-b533-1b3f6a7180b1"/>
+						<reportElement x="0" y="30" width="215" height="30" uuid="d7a0561c-83d8-4d29-b533-1b3f6a7180b1"/>
 						<box>
 							<bottomPen lineWidth="1.0"/>
 						</box>
@@ -2075,7 +2178,7 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 						<text><![CDATA[Comisiones y gastos por Servicios ]]></text>
 					</staticText>
 					<textField>
-						<reportElement x="250" y="30" width="120" height="30" uuid="e960051e-9bce-4ed9-967c-280c1aaaa5db"/>
+						<reportElement x="215" y="30" width="90" height="30" uuid="e960051e-9bce-4ed9-967c-280c1aaaa5db"/>
 						<box>
 							<bottomPen lineWidth="1.0"/>
 						</box>
@@ -2085,7 +2188,7 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 						<textFieldExpression><![CDATA["$"+$F{service}]]></textFieldExpression>
 					</textField>
 					<staticText>
-						<reportElement x="0" y="90" width="250" height="30" uuid="6fb86842-88d6-4dd8-9ec4-e2ebc3ed22a7"/>
+						<reportElement x="0" y="90" width="215" height="30" uuid="6fb86842-88d6-4dd8-9ec4-e2ebc3ed22a7"/>
 						<box>
 							<bottomPen lineWidth="1.0"/>
 						</box>
@@ -2096,7 +2199,7 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 						<text><![CDATA[Comisiones y gastos Administrativos*]]></text>
 					</staticText>
 					<staticText>
-						<reportElement x="0" y="180" width="250" height="30" uuid="ccdd9bbd-ada3-4309-a8ed-258233d34cf5"/>
+						<reportElement x="0" y="180" width="215" height="30" uuid="ccdd9bbd-ada3-4309-a8ed-258233d34cf5"/>
 						<box>
 							<bottomPen lineWidth="1.0"/>
 						</box>
@@ -2107,7 +2210,7 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 						<text><![CDATA[Monto total de impuestos retenidos (ISR)*]]></text>
 					</staticText>
 					<textField>
-						<reportElement x="250" y="180" width="120" height="30" uuid="a0274ca9-07a6-4be9-b1b8-b3e155cfaa85"/>
+						<reportElement x="215" y="180" width="90" height="30" uuid="a0274ca9-07a6-4be9-b1b8-b3e155cfaa85"/>
 						<box>
 							<bottomPen lineWidth="1.0"/>
 						</box>
@@ -2117,7 +2220,7 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 						<textFieldExpression><![CDATA["$"+$F{isr}]]></textFieldExpression>
 					</textField>
 					<textField>
-						<reportElement x="250" y="90" width="120" height="30" uuid="a5c8d7ea-adca-4620-8726-236c884a250a"/>
+						<reportElement x="215" y="90" width="90" height="30" uuid="a5c8d7ea-adca-4620-8726-236c884a250a"/>
 						<box>
 							<bottomPen lineWidth="1.0"/>
 						</box>
@@ -2127,7 +2230,7 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 						<textFieldExpression><![CDATA["$"+$F{admin}]]></textFieldExpression>
 					</textField>
 					<staticText>
-						<reportElement x="0" y="120" width="250" height="30" uuid="5a00af22-7599-4afb-937f-a570fbe7ff03"/>
+						<reportElement x="0" y="120" width="215" height="30" uuid="5a00af22-7599-4afb-937f-a570fbe7ff03"/>
 						<box>
 							<bottomPen lineWidth="1.0"/>
 						</box>
@@ -2138,7 +2241,7 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 						<text><![CDATA[Monto total de comisiones y gastos]]></text>
 					</staticText>
 					<textField>
-						<reportElement x="250" y="120" width="120" height="30" uuid="05132318-f3bf-43cd-9ae1-4039269044c8"/>
+						<reportElement x="215" y="120" width="90" height="30" uuid="05132318-f3bf-43cd-9ae1-4039269044c8"/>
 						<box>
 							<bottomPen lineWidth="1.0"/>
 						</box>
@@ -2176,6 +2279,125 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 						<textFieldExpression><![CDATA["El monto total de impuestos retenidos (ISR) representa el " + $F{totalImpuestosSobreTotal} +"% de su cartera de inversión al cierre del periodo."]]></textFieldExpression>
 					</textField>
 				</frame>
+				<componentElement>
+					<reportElement x="0" y="240" width="185" height="176" uuid="5e91c7b4-2d68-4a13-b0f7-84c25e137a09"/>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+						<datasetRun subDataset="MonthlyReturns" uuid="a7c3f051-9b42-4e86-b158-6d0a2f94c7e3">
+							<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JsonDataSource)$P{REPORT_DATA_SOURCE}).subDataSource("data.monthlyReturns")]]></dataSourceExpression>
+						</datasetRun>
+						<jr:column width="110" uuid="1b8d6e27-05fa-4c93-8e71-39b4a0c26d58">
+							<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="110" height="20" forecolor="#FFFFFF" uuid="6a24bf9e-71c8-4d05-b3e6-2f817c40a9b6"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="8" isBold="true"/>
+									</textElement>
+									<text><![CDATA[Mes]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="13">
+								<textField>
+									<reportElement x="0" y="0" width="110" height="13" uuid="0d5c83a1-4e97-4b26-95f3-c718e0d6b247"/>
+									<textElement verticalAlignment="Middle">
+										<font size="8"/>
+										<paragraph leftIndent="8"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="75" uuid="9f37e2b0-6c15-4a78-81d9-4e0b73f5c81a">
+							<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="75" height="20" forecolor="#FFFFFF" uuid="c4e0917d-3b56-4f21-a90c-15d8724b6e03"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="8" isBold="true"/>
+									</textElement>
+									<text><![CDATA[Rendimiento Neto]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="13">
+								<textField>
+									<reportElement x="0" y="0" width="75" height="13" uuid="2c86d4f5-08b3-4e19-a742-6b95013fc82d"/>
+									<textElement textAlignment="Right" verticalAlignment="Middle">
+										<font size="8"/>
+										<paragraph rightIndent="10"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{net}+"%"]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
+				<textField>
+					<reportElement mode="Opaque" x="195" y="240" width="185" height="20" forecolor="#FFFFFF" backcolor="#016390" uuid="8b0e5a37-64d1-42fc-9e08-73a6c1b5d420"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+						<paragraph leftIndent="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Rendimiento "+$F{semesterLabel}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="195" y="260" width="125" height="20" uuid="f60a2938-15c7-4d84-b0e3-9c48a2703f61"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+						<paragraph leftIndent="8"/>
+					</textElement>
+					<text><![CDATA[Tasa de rendimiento bruto]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="320" y="260" width="60" height="20" uuid="3d7b1e4c-89a0-4f36-b527-06e9c284a715"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="9"/>
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{grossSemester}+"%"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="195" y="280" width="125" height="20" uuid="7e2c04b8-3f91-4a6d-85c0-1b73de950842"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+						<paragraph leftIndent="8"/>
+					</textElement>
+					<text><![CDATA[Tasa de rendimiento neto]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="320" y="280" width="60" height="20" uuid="0a58f6d3-2b47-4e91-9c68-53b8e1470926"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="9"/>
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{netSemester}+"%"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="420" width="560" height="14" uuid="4f1a7c25-90b6-4e38-a1d7-62c085b93e14"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[*Tasas de rendimiento efectivas del periodo indicado y rendimientos en pesos / dólares americanos (Según sea el caso)]]></text>
+				</staticText>
 				<textField>
 					<reportElement x="270" y="210" width="100" height="20" uuid="f8ec245e-3f5b-4f4b-898c-b1f89d983c9e"/>
 					<box>
