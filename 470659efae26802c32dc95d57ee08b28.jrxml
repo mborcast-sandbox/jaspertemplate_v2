@@ -2472,10 +2472,8 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 					</textElement>
 					<text><![CDATA[Todas las comisiones son sujetas de IVA]]></text>
 				</staticText>
-				<staticText isStretchWithOverflow="true">
-					<reportElement isPrintWhenDetailOverflows="true" x="382" y="359" width="370" height="40" forecolor="#030303" uuid="a4b03951-cb12-4bca-a687-d3403ed96a42">
-						<property name="net.sf.jasperreports.style.isStretchWithOverflow" value="true"/>
-					</reportElement>
+				<staticText>
+					<reportElement x="382" y="359" width="370" height="40" forecolor="#030303" uuid="a4b03951-cb12-4bca-a687-d3403ed96a42"/>
 					<box>
 						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
