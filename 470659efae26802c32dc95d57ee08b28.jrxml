@@ -2470,7 +2470,7 @@ La Comisión supervisa exclusivamente la prestación de servicios de administrac
 						<font size="8" isBold="false"/>
 						<paragraph leftIndent="5"/>
 					</textElement>
-					<text><![CDATA[Todas las comisiones son sujetas de IVA]]></text>
+					<text><![CDATA[Todas las comisiones y gastos incluyen IVA.]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="382" y="359" width="370" height="40" forecolor="#030303" uuid="a4b03951-cb12-4bca-a687-d3403ed96a42"/>
